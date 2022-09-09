@@ -932,14 +932,16 @@ textarea:focus {
   margin-bottom: 3rem;
   width: 30rem;
 }
-
+.balcon_icons_img img{
+  transition: all 0.5s;
+}
 .popup_calc_content #type1 {
   display: inline-block;
 }
 
 .do_image_more img{
-    width: 110px;
-    height: 70px;
+    transform: scaleX(1.2);
+    transform: scaleY(1.2);
     cursor: pointer;
   }
 
@@ -1750,6 +1752,7 @@ textarea:focus {
 
   .popup_calc_content .balcon_icons img {
     width: 20%;
+  
   }
 
   .popup_calc_content .big_img img {

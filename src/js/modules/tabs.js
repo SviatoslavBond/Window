@@ -1,4 +1,4 @@
-function tabs(headerSelector, tabSelector, contentSelector, aciveClass) {
+function tabs(headerSelector, tabSelector, contentSelector, aciveClass, display = 'block') {
 	const header = document.querySelector(headerSelector),
 		tab = document.querySelectorAll(tabSelector),
 		content = document.querySelectorAll(contentSelector);
@@ -9,20 +9,15 @@ function tabs(headerSelector, tabSelector, contentSelector, aciveClass) {
 		tab.forEach(item => {
 			item.classList.remove(aciveClass);
 		});
-
 	}
 	function showTabContent(i = 0) {
-		content[i].style.display = 'block';
+		content[i].style.display = display;
 		tab[i].classList.add(aciveClass);
 	}
 	hideTabContetn();
 	showTabContent();
 
 	header.addEventListener('click', function (e) {
-		// console.log(this);
-		// console.log(e.currentTarget);
-		console.log(e.target);
-
 		const target = e.target;
 		if (target.classList.contains(tabSelector.replace(/\./, '')) || (this === header)) {
 			tab.forEach((item, i) => {
@@ -32,7 +27,6 @@ function tabs(headerSelector, tabSelector, contentSelector, aciveClass) {
 				}
 			});
 		}
-
 	});
 }
 export default tabs;
