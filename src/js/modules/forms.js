@@ -1,7 +1,8 @@
-import { post } from "jquery";
+import { data, post } from "jquery";
 import validationInputsForNum from "./validationInputsForNum";
-const forms = (dataWindow) => {
+import { closeAllModal } from "./modals";
 
+const forms = (dataWindow) => {
 	const forms = document.querySelectorAll('form'),
 		input = document.querySelectorAll('input'),
 		message = {
@@ -11,6 +12,7 @@ const forms = (dataWindow) => {
 		},
 		phoneInput = document.querySelectorAll('input[name = "user_phone"]');
 	validationInputsForNum(phoneInput);
+
 
 
 	const postDate = async (url, data) => {
@@ -47,6 +49,11 @@ const forms = (dataWindow) => {
 				.then(res => {
 					console.log(res);
 					statusMessage.textContent = message.succses;
+					setTimeout(() => {
+						closeAllModal();
+						dataWindow = {};
+						document.body.classList.remove('modal-open');
+					}, 2000);
 				}).catch(er => {
 					statusMessage.textContent = message.fail;
 				}).finally(() => {
@@ -55,6 +62,9 @@ const forms = (dataWindow) => {
 						statusMessage.remove();
 					}, 3000);
 				});
+
+
+
 		});
 	});
 

@@ -28,18 +28,17 @@ const changeParamWindow = (setWindow) => {
 					case '.popup_calc_profile_button':
 						setWindow.type = typeWindow.value;
 						break;
-					default:
-						profileWindow.forEach(item => {
-							item.addEventListener('change', function () {
-								for (let i = 0; i < profileWindow.length; i++) {
-									profileWindow[i].checked = false;
-								}
-								this.checked = true;
-								if (this == profileWindow[0]) setWindow.profile = 'Холодное';
-								if (this == profileWindow[1]) setWindow.profile = 'Теплое';
-							});
-						});
 				}
+			});
+		});
+		profileWindow.forEach(item => {
+			item.addEventListener('change', function () {
+				for (let i = 0; i < profileWindow.length; i++) {
+					profileWindow[i].checked = false;
+				}
+				this.checked = true;
+				if (this == profileWindow[0]) setWindow.profile = 'Холодное';
+				if (this == profileWindow[1]) setWindow.profile = 'Теплое';
 			});
 		});
 	};

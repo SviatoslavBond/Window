@@ -1,6 +1,8 @@
 const validationInputsForNum = (inputFields) => {
 	inputFields.forEach(item => {
-		item.value = item.value.replace(/\D/gi, '');
+		item.addEventListener('input', () => {
+			item.value = item.value.replace(/\D/gi, '');
+		});
 	});
 };
 export default validationInputsForNum;
