@@ -7,14 +7,15 @@ const changeParamWindow = (setWindow) => {
 	const typeWindow = document.querySelector('#view_type');
 	const profileWindow = document.querySelectorAll('.checkbox');
 	validationInputsForNum([widthWindow, heightWindow]);
-
+	profileWindow.forEach((item, i) => {
+		item.addEventListener('change', () => {
+			console.log(i);
+		});
+	});
 	const bindActionToParametrs = (triggerSelector) => {
 		const trigger = document.querySelectorAll(triggerSelector);
 		trigger.forEach(el => {
-			el.addEventListener('click', (e) => {
-				if (e.target) {
-					e.preventDefault();
-				}
+			el.addEventListener('click', () => {
 				switch (triggerSelector) {
 					case '.popup_calc_button':
 						setWindow.width = widthWindow.value;
@@ -31,14 +32,13 @@ const changeParamWindow = (setWindow) => {
 				}
 			});
 		});
-		profileWindow.forEach(item => {
+		profileWindow.forEach((item, i) => {
 			item.addEventListener('change', function () {
-				for (let i = 0; i < profileWindow.length; i++) {
-					profileWindow[i].checked = false;
-				}
-				this.checked = true;
-				if (this == profileWindow[0]) setWindow.profile = 'Холодное';
-				if (this == profileWindow[1]) setWindow.profile = 'Теплое';
+				profileWindow.forEach(box => {
+					box.checked = false;
+					this.checked = true;
+				});
+				i == 0 ? setWindow.profile = 'Холодное' : setWindow.profile = 'Теплое';
 			});
 		});
 	};

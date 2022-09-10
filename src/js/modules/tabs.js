@@ -10,6 +10,7 @@ function tabs(headerSelector, tabSelector, contentSelector, aciveClass, display 
 			item.classList.remove(aciveClass);
 		});
 	}
+
 	function showTabContent(i = 0) {
 		content[i].style.display = display;
 		tab[i].classList.add(aciveClass);
